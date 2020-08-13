@@ -35,7 +35,8 @@ namespace ADO.NET
 
             }
 
-
+            int resultado=FacturaActiveRecord.TotalUnidades();
+            Console.WriteLine(resultado);
             Console.ReadLine();
         }
     }

@@ -203,11 +203,24 @@ namespace ADO.NET
             }
 
 
+
         }
 
+        public static int TotalUnidades()
+        {
+              using (SqlConnection conexion =
+          new SqlConnection(CadenaConexion()))
+            {
+                conexion.Open();
+                String sql = "select sum (unidades) from LineasFactura";
+                SqlCommand comando = new SqlCommand(sql, conexion);
+                int total = Convert.ToInt32(comando.ExecuteScalar());
+                return total;
+            }
 
+        }
 
-        public static FacturaActiveRecord BuscarUno(int numero)
+            public static FacturaActiveRecord BuscarUno(int numero)
         {
 
             using (SqlConnection conexion =

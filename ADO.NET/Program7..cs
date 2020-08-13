@@ -1,0 +1,43 @@
+﻿
+using ADO.NET.Persistencia;
+using ADO.NET.Persistencia.Filtros;
+using Semicrol.Cursos.Dominio;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ADO.NET
+{
+    class Program7
+    {
+        static void Main(string[] args)
+        {
+
+            IFacturaRepository repositorio = new FacturaRepository();
+            //repositorio
+              //  .Borrar(new Factura(20));
+
+
+            Factura factura=repositorio.BuscarUno(1);
+            Console.WriteLine(factura.Concepto);
+
+            FiltroFacturaNuevo filtro
+                = new FiltroFacturaNuevo();
+                filtro.AddConcepto("televisor").AddNumero(1);
+
+        
+              List <Factura> facturas = repositorio.BuscarTodos(filtro);
+
+            foreach(Factura f in facturas)
+            {
+                Console.WriteLine(f.Numero);
+                Console.WriteLine(f.Concepto);
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
