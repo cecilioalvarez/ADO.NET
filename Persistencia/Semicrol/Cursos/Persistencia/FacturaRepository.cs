@@ -1,7 +1,7 @@
 ﻿
 
 using Semicrol.Cursos.Dominio;
-using Semicrol.Persistencia.Filtros;
+using Semicrol.Cursos.Persistencia.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ADO.NET.Persistencia
+namespace Semicrol.Cursos.Persistencia
 {
-    class FacturaRepository:IFacturaRepository
+   public class FacturaRepository:IFacturaRepository
     {
         public void Insertar(Factura factura)
         {

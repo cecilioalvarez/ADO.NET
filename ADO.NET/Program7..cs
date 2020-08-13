@@ -1,7 +1,7 @@
 ﻿
-using ADO.NET.Persistencia;
-using ADO.NET.Persistencia.Filtros;
 using Semicrol.Cursos.Dominio;
+using Semicrol.Cursos.Persistencia;
+using Semicrol.Cursos.Persistencia.Filtros;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
