@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -188,6 +189,53 @@ namespace Semicrol.Cursos.Persistencia
             }
         }
 
+        public List<Factura> BuscarTodosConLineas()
+        {
+
+            
+            using (SqlConnection conexion =
+          new SqlConnection(CadenaConexion()))
+            {
+                conexion.Open();
+                String sql = "select facturas.numero as facturaNumero,facturas.concepto,"+
+                " LineasFactura.numero as lineaNumero,unidades,productos_id"+
+                " from Facturas inner join lineasFactura on facturas.numero = lineasFactura.facturas_numero";
+                
+                SqlCommand comando = new SqlCommand(sql, conexion);
+
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                List<Factura> listaFacturas = new List<Factura>();
+
+                while (lector.Read())
+                {
+                    Factura f= new Factura(Convert.ToInt32(lector["facturaNumero"]));
+                    if (!listaFacturas.Contains(f))  {
+
+                        f.Concepto = lector["concepto"].ToString();
+                        listaFacturas.Add(f);
+                    }else
+                    {
+
+                        f = listaFacturas
+                            .Find((facturita) => facturita.Numero == Convert.ToInt32(lector["facturaNumero"]));
+                    }
+
+                    LineaFactura linea = new LineaFactura();
+                    linea.Unidades = Convert.ToInt32(lector["unidades"]);
+                    linea.ProductosID = lector["productos_id"].ToString();
+                    linea.Numero = Convert.ToInt32(lector["lineaNumero"]);
+                    f.AddLinea(linea);
+                   
+                }
+
+                return listaFacturas;
+            }
+
+
+
+        }
     }
 
 

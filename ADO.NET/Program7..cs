@@ -15,7 +15,7 @@ namespace ADO.NET
     {
         static void Main(string[] args)
         {
-
+            /*
             IFacturaRepository repositorio = new FacturaRepository();
             //repositorio
               //  .Borrar(new Factura(20));
@@ -36,6 +36,23 @@ namespace ADO.NET
                 Console.WriteLine(f.Numero);
                 Console.WriteLine(f.Concepto);
 
+            }
+
+            */
+
+            IFacturaRepository repo = new FacturaRepository();
+
+            List<Factura> lista=repo.BuscarTodosConLineas();
+
+            foreach (Factura f in lista )
+            {
+
+                Console.WriteLine(f.Concepto);
+                foreach (LineaFactura lf in f.lineas)
+                {
+
+                    Console.WriteLine(lf.Unidades);
+                }
             }
             Console.ReadLine();
         }

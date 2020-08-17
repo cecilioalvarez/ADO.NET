@@ -16,6 +16,7 @@ namespace Semicrol.Cursos.Persistencia
         void Actualizar(Factura factura);
 
         List<Factura> BuscarTodos();
+        List<Factura> BuscarTodosConLineas();
         List<Factura> BuscarTodos(FiltroFacturaNuevo filtro);
         Factura BuscarUno(int numero);
 
