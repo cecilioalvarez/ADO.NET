@@ -12,6 +12,12 @@ namespace Semicrol.Cursos.Dominio
         public int Numero { get; set; }
         public string ProductosID { get; set; }
 
+        public LineaFactura( int numero, Factura factura)
+        {
+            this.factura = factura;
+            Numero = numero;
+        }
+
         public int Unidades { get; set; }
 
         public override bool Equals(object obj)

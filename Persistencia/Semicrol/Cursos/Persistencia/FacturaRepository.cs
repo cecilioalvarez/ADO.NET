@@ -222,10 +222,11 @@ namespace Semicrol.Cursos.Persistencia
                             .Find((facturita) => facturita.Numero == Convert.ToInt32(lector["facturaNumero"]));
                     }
 
-                    LineaFactura linea = new LineaFactura();
+                    LineaFactura linea = 
+                        new LineaFactura(Convert.ToInt32(lector["lineaNumero"]),f);
                     linea.Unidades = Convert.ToInt32(lector["unidades"]);
                     linea.ProductosID = lector["productos_id"].ToString();
-                    linea.Numero = Convert.ToInt32(lector["lineaNumero"]);
+                    
                     f.AddLinea(linea);
                    
                 }
