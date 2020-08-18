@@ -1,7 +1,10 @@
 ﻿
+using Persistencia.Semicrol.Cursos.Persistencia;
 using Semicrol.Cursos.Dominio;
 using Semicrol.Cursos.Persistencia;
 using Semicrol.Cursos.Persistencia.Filtros;
+using Semicrol.Cursos.Servicios;
+using Servicios.Semicrol.Cursos.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -39,7 +42,7 @@ namespace ADO.NET
             }
 
             */
-
+            /*
             IFacturaRepository repo = new FacturaRepository();
 
             List<Factura> lista=repo.BuscarTodosConLineas();
@@ -53,6 +56,20 @@ namespace ADO.NET
 
                     Console.WriteLine(lf.Unidades);
                 }
+            }
+
+            */
+
+            IFacturaRepository repo = new FacturaRepository();
+            ILineaFacturaRepository repolineas = new LineaFacturaRepository();
+            IServicioFacturacion servicio = new ServicioFacturas(repo,repolineas);
+
+            List<Factura> lista = servicio.BuscarTodasLasFacturas();
+
+            foreach (Factura f in lista)
+            {
+                Console.WriteLine(f.Concepto);
+
             }
             Console.ReadLine();
         }

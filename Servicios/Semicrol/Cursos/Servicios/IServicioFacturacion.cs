@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Semicrol.Cursos.Servicios
 {
-    interface IServicioFacturacion
+    public interface IServicioFacturacion
     {
          void InsertarFactura(Factura f);
         List<Factura> BuscarTodasLasFacturas();

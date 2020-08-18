@@ -4,13 +4,16 @@ using Semicrol.Cursos.Persistencia;
 using Semicrol.Cursos.Servicios;
 using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Servicios.Semicrol.Cursos.Servicios
 {
-    class ServicioFacturas : IServicioFacturacion
+    [Transaction]
+    public class ServicioFacturas : IServicioFacturacion
     {
 
         private IFacturaRepository repoFacturas;
@@ -22,6 +25,7 @@ namespace Servicios.Semicrol.Cursos.Servicios
             this.repoLineas = repoLineas;
         }
 
+   
         public void InsertarFactura(Factura f)
         {
 
